@@ -1,0 +1,58 @@
+<!--  ==========  -->
+<!--  = Cart =  -->
+<!--  ==========  -->
+<div class="span3">
+  <div class="cart-container" id="cartContainer">
+    <div class="cart">
+      <p class="items">سبد خرید <span class="dark-clr" *ngIf="details">({{details.length}})</span></p>
+      <p class="dark-clr hidden-tablet" *ngIf="details">{{totalPrice}} تومان</p>
+      <a href="checkout-step-1.html" class="btn btn-danger">
+        <!-- <span class="icon icons-cart"></span> -->
+        <i class="icon-shopping-cart"></i>
+      </a>
+    </div>
+    <div class="open-panel">
+
+      <div *ngIf="details && details.length > 0">
+        <div class="item-in-cart clearfix" *ngFor="let detail of details">
+          <div class="image">
+            <img src="{{detail.imageName}}" width="124" height="124" alt="cart item" />
+          </div>
+          <div class="desc">
+            <strong><a href="product.html">{{detail.title}}</a></strong>
+            <span class="light-clr qty">
+              تعداد : {{detail.count}}
+              &nbsp;
+              <a (click)="removeOrderDetail(detail.id)" class="icon-remove-sign" title="Remove Item"></a>
+            </span>
+          </div>
+          <div class="price">
+            <strong>{{detail.count * detail.price}} تومان</strong>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="summary">
+        <div class="line">
+          <div class="row-fluid">
+            <div class="span6">هزینه ارسال :</div>
+            <div class="span6 align-right">$4.99</div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="row-fluid">
+            <div class="span6">جمع کل :</div>
+            <div class="span6 align-right size-16">{{totalPrice}} تومان</div>
+          </div>
+        </div>
+      </div>
+      <div class="proceed">
+        <a href="checkout-step-1.html" class="btn btn-danger pull-right bold higher">تصویه حساب <i
+            class="icon-shopping-cart"></i></a>
+        <small>هزینه ارسال بر اساس منطقه جغرافیایی محاسبه میشود. <a href="#">اطلاعات بیشتر</a></small>
+      </div>
+    </div>
+  </div>
+</div> <!-- /cart -->

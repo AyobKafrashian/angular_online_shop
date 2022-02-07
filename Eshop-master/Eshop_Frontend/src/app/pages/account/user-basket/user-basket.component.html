@@ -1,0 +1,107 @@
+<!--  ==========  -->
+<!--  = Breadcrumbs =  -->
+<!--  ==========  -->
+<div class="darker-stripe">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <ul class="breadcrumb">
+            <li>
+              <a href="index.html">وبمارکت</a>
+            </li>
+            <li><span class="icon-chevron-right"></span></li>
+            <li>
+              <a href="contact.html">ارتباط با ما</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="push-up top-equal blocks-spacer-last">
+      <div class="row">
+  
+        <!--  ==========  -->
+        <!--  = Main Title =  -->
+        <!--  ==========  -->
+  
+        <div class="span12">
+          <div class="title-area">
+            <h1 class="inline"><span class="light">با ما</span> ارتباط برقرار کنید.</h1>
+          </div>
+        </div>
+  
+        <!--  ==========  -->
+        <!--  = Main content =  -->
+        <!--  ==========  -->
+        <section class="span8 single single-page">
+  
+          <!--  ==========  -->
+          <!--  = Contact Form =  -->
+          <!--  ==========  -->
+          <section class="contact-form-container">
+  
+            <h3 class="push-down-25"><span class="light">سبد</span> خرید</h3>
+  
+
+ <!--  ==========  -->
+        <!--  = Contact Form =  -->
+        <!--  ==========  -->
+        <section class="contact-form-container">
+
+            <h3 class="push-down-25"><span class="light">سبد خرید</span></h3>
+            <table class="table table-bordered table-striped" *ngIf="details.length>0">
+              <thead>
+              <tr>
+                <th>محصول</th>
+                <th>قیمت</th>
+                <th>دستورات</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let detail of details">
+                <td>
+                  <p>{{detail.title}}</p>
+                </td>
+                <td>
+                  <p>{{detail.price}}</p>
+                </td>
+                <td>
+                  <a class="btn btn-danger" (click)="removeOrderDetail(detail.id)">حذف کردن</a>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <p>
+                    قیمت نهایی : {{totalPrice}}
+                  </p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <p class="alert alert-info" *ngIf="details.length === 0">
+              سبد خرید شما خالی می باشد
+            </p>
+          </section>
+  
+
+
+         
+          </section>
+  
+        </section> <!-- /main content -->
+  
+        <!--  ==========  -->
+        <!--  = Sidebar =  -->
+        <!--  ==========  -->
+        <aside class="span4">
+          <app-user-side-bar></app-user-side-bar>
+        </aside> <!-- /sidebar -->
+      </div>
+    </div>
+  </div> <!-- /container -->
+  
+  <swal #sweetAlertSuccess text="" icon="success" [showCancelButton]="true" [focusCancel]="true">
+  </swal>

@@ -1,0 +1,171 @@
+<!--  ==========  -->
+<!--  = Header =  -->
+<!--  ==========  -->
+<header id="header">
+  <div class="container">
+    <div class="row">
+
+      <!--  ==========  -->
+      <!--  = Logo =  -->
+      <!--  ==========  -->
+      <div class="span7">
+        <a class="brand">
+          <img src="/assets/images/logo.png" alt="Webmarket Logo" width="48" height="48" />
+          <span class="pacifico">Webmarket</span>
+          <span class="tagline" *ngIf="user != null ">{{user.firstName + " " + user.lastName}} عزیز خوش آمدید</span>
+          <a *ngIf="user != null " [routerLink]="['user/edit']">
+            <span class="tagline">پنل کاربری</span>
+          </a>
+        </a>
+      </div>
+
+      <!--  ==========  -->
+      <!--  = Social Icons =  -->
+      <!--  ==========  -->
+      <div class="span5">
+        <div class="topmost-line">
+          <div class="lang-currency">
+            <div class="dropdown js-selectable-dropdown">
+              <a data-toggle="dropdown" class="selected" href="#"><span class="js-change-text"><i
+                    class="famfamfam-flag-gb"></i> انگلیسی (EN)</span> <b class="caret"></b></a>
+              <!-- for all available country flags look the styles in lib/components/_flags.scss -->
+              <ul class="dropdown-menu js-possibilities" role="menu" aria-labelledby="dLabel">
+                <li><a href="#"><i class="famfamfam-flag-gb"></i> انگلیسی (EN)</a></li>
+                <li><a href="#"><i class="famfamfam-flag-si"></i> اسلوانیایی (SI)</a></li>
+                <li><a href="#"><i class="famfamfam-flag-de"></i> آلمانی (DE)</a></li>
+                <li><a href="#"><i class="famfamfam-flag-fr"></i> فرانسوی (FR)</a></li>
+                <li><a href="#"><i class="famfamfam-flag-es"></i> اسپانیولی (ES)</a></li>
+              </ul>
+            </div>
+            <div class="dropdown js-selectable-dropdown">
+              <a data-toggle="dropdown" class="selected" href="#"><span class="js-change-text">USD ($)</span> <b
+                  class="caret"></b></a>
+              <ul class="dropdown-menu js-possibilities" role="menu" aria-labelledby="dLabel">
+                <li><a href="#">USD ($)</a></li>
+                <li><a href="#">EUR (€)</a></li>
+                <li><a href="#">YEN (¥)</a></li>
+                <li><a href="#">GBP (£)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="register" *ngIf="user == null">
+            <a [routerLink]="'Login'" role="button">ورود</a> یا
+            <a [routerLink]="'Register'">ثبت نام</a>
+          </div>
+
+          <div class="register" *ngIf="user != null">
+            <a role="button" (click)="logOutUser()">خروج</a>
+          </div>
+        </div>
+      </div> <!-- /social icons -->
+    </div>
+  </div>
+</header>
+
+<!--  ==========  -->
+<!--  = Main Menu / navbar =  -->
+<!--  ==========  -->
+<div class="navbar navbar-static-top" id="stickyNavbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span9">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!--  ==========  -->
+          <!--  = Menu =  -->
+          <!--  ==========  -->
+          <div class="nav-collapse collapse">
+            <ul class="nav" id="mainNavigation">
+              <li class="dropdown active">
+                <a [routerLink]="''" class="dropdown-toggle"> خانه <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown active">
+                    <a href="index.html"><i class="icon-caret-left pull-right visible-desktop"></i> رنگ های پوسته</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index.html">پوسته پیش فرض</a></li>
+                      <li class="active"><a href="index-grass-green.html">پوسته سبز چمنی</a></li>
+                      <li><a href="index-oil-green.html">پوسته سبز روغنی</a></li>
+                      <li><a href="index-gray.html">پوسته خاکستری</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="index-boxed-solid.html"><i class="icon-caret-left pull-right visible-desktop"></i> ورژن
+                      boxed</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index-boxed-solid.html">Boxed - با رنگ پس زمینه ثابت</a></li>
+                      <li><a href="index-boxed-pattern.html">Boxed - با پس زمینه الگو</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a [routerLink]="['products']" routerLinkActive="router-link-active" class="dropdown-toggle"> محصولات <b
+                    class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li><a href="shop.html">قالب بندی پیش فرض</a></li>
+                  <li><a href="shop-no-sidebar.html">تمام صفحه</a></li>
+                  <li><a href="product.html">محصول تکی</a></li>
+                  <li><a href="shop-search.html">نتایج جستجو</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="blog.html" class="dropdown-toggle">بلاگ <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li><a href="blog.html">قالب بندی پیش فرض</a></li>
+                  <li><a href="blog-single.html">تک نوشته</a></li>
+                  <li><a href="blog-search.html">نتایج جستجو</a></li>
+                  <li><a href="404.html">صفحه 404</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="features.html" class="dropdown-toggle">امکانات <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li><a href="icons.html">آیکن ها</a></li>
+                  <li class="dropdown">
+                    <a href="features.html" class="dropdown-toggle"><i
+                        class="icon-caret-left pull-right visible-desktop"></i> همه امکانات</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="features.html#headings">سرخط ها</a></li>
+                      <li><a href="features.html#alertBoxes">جعبه های هشدار</a></li>
+                      <li><a href="features.html#tabs">تب ها</a></li>
+                      <li><a href="features.html#buttons">دکمه ها</a></li>
+                      <li><a href="features.html#toggles">تاگل ها</a></li>
+                      <li><a href="features.html#quotes">نقل قول ها</a></li>
+                      <li><a href="features.html#gallery">گرید های گالری</a></li>
+                      <li><a href="features.html#code">کد</a></li>
+                      <li><a href="features.html#columns">ستون ها</a></li>
+                      <li><a href="features.html#maps">نقشه ها</a></li>
+                      <li><a href="features.html#progress">نوار های پیشرفت</a></li>
+                      <li><a href="features.html#tables">جداول</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a [routerLink]="'AboutUs'">درباره ما</a></li>
+              <li><a [routerLink]="'ContactUs'">تماس با ما</a></li>
+            </ul>
+
+            <!--  ==========  -->
+            <!--  = Search form =  -->
+            <!--  ==========  -->
+            <form class="navbar-form pull-right" action="#" method="get">
+              <button type="submit"><span class="icon-search"></span></button>
+              <input type="text" class="span1" name="search" id="navSearchInput">
+            </form>
+          </div><!-- /.nav-collapse -->
+        </div>
+
+        <app-header-basket></app-header-basket>
+
+      </div>
+    </div>
+  </div>
+</div> <!-- /main menu -->

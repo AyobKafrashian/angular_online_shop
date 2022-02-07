@@ -1,0 +1,255 @@
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index.html">وبمارکت</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="shop.html">فروشگاه</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="#">محصول ویژه</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="product.html">تی شرت مردانه کلاه دار</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="push-up top-equal blocks-spacer">
+
+        <!--  ==========  -->
+        <!--  = Product =  -->
+        <!--  ==========  -->
+        <div class="row blocks-spacer">
+
+            <!--  ==========  -->
+            <!--  = Preview /assets//assets/images =  -->
+            <!--  ==========  -->
+            <div class="span5">
+                <div class="product-preview">
+                    <div class="picture">
+                        <img [src]="mainImage" [alt]="product.productName" width="940" height="940" id="mainPreviewImg">
+                    </div>
+                    <div class="thumbs clearfix" *ngIf="galleries">
+                        <div class="thumb" [ngClass]="{'active': selectedImageId ===0}" (click)="selectImage(0)">
+                            <a><img [src]="imagePath+product.imageName" [alt]="product.productName" width="940"
+                                    height="940"></a>
+                        </div>
+
+                        <div class="thumb" [ngClass]="{'active': selectedImageId ===gallery.id}"
+                            (click)="selectImage(gallery.id)"
+                            *ngFor="let gallery of galleries; index as i ; first as isFirst">
+
+                            <a><img [src]="imageGalleryPath+gallery.imageName" [alt]="product.productName" width="940"
+                                    height="940"></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  ==========  -->
+            <!--  = Title and short desc =  -->
+            <!--  ==========  -->
+            <div class="span7">
+                <div class="product-title">
+                    <h1 class="name">{{product.productName}}</h1>
+                    <div class="meta">
+                        <span class="tag">{{product.price}} تومان</span>
+                        <span class="stock">
+                            <span class="btn btn-success margin-left-10" *ngIf="product.isExist">موجود</span>
+                            <span class="btn btn-info" *ngIf="product.isSpecial">ویژه</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <p>{{product.shortDescription}}</p>
+                    <hr>
+
+                    <!--  ==========  -->
+                    <!--  = Add to cart form =  -->
+                    <!--  ==========  -->
+                    <div action="#" class="form form-inline clearfix">
+                        <div class="numbered">
+                            <input type="text" [(ngModel)]="count" class="tiny-size" disabled>
+                            <span class="clickable add-one icon-plus-sign-alt" (click)="addCount()"></span>
+                            <span class="clickable remove-one icon-minus-sign-alt" (click)="removeCount()"></span>
+                        </div>
+                        &nbsp;
+
+                        <button class="btn btn-success pull-right" (click)="addProductToOrder()"><i class="icon-shopping-cart"></i> اضافه به سبد
+                            خرید</button>
+                    </div>
+
+                    <hr>
+
+                    <!--  ==========  -->
+                    <!--  = Share buttons =  -->
+                    <!--  ==========  -->
+                    <div class="share-item">
+                        <div class="pull-right social-networks">
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_pinterest_pinit"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                            </div>
+                            <script type="text/javascript"
+                                src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977"></script>
+                            <!-- AddThis Button END -->
+                        </div>
+                        با دوستان خود به اشتراک بگذارید :
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--  ==========  -->
+        <!--  = Tabs with more info =  -->
+        <!--  ==========  -->
+        <div class="row">
+            <div class="span12">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                    </li>
+                    <li>
+                        <a href="#tab-3" data-toggle="tab">نظرات</a>
+                    </li>
+                    <li>
+                        <a href="#tab-4" data-toggle="tab">جزئیات ارسال</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="fade in tab-pane active" id="tab-1">
+                        {{product.description}}
+                    </div>
+
+                    <div class="fade tab-pane" id="tab-3">
+                        <section id="comments" class="comments-container">
+                            <div *ngIf="productComments.length > 0">
+                                <h3 class="push-down-25"><span class="light">{{productComments.length}}</span> نظر</h3>
+
+
+                                <div class="single-comment clearfix" *ngFor="let comment of productComments">
+                                    <div class="avatar-container">
+                                        <img src="/assets/images/dummy/avatars/avatar-1.jpg" alt="avatar" class="avatar"
+                                            width="184" height="184">
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-inner">
+                                            <cite class="author-name">
+                                                <span class="light">{{comment.userFullName}}</span>
+                                            </cite>
+                                            <div class="metadata">
+                                                {{comment.createDate}}
+                                            </div>
+                                            <div class="comment-text">
+                                                <p [innerHTML]="comment.text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                            </div>
+
+                            <div *ngIf="currentUser">
+                                <h3 class="push-down-25"><span class="light">نظر</span> بدهید</h3>
+
+                                <form class="form form-inline form-comments" [formGroup]="commentForm"
+                                    (ngSubmit)="addComment()">
+
+                                    <p class="push-down-20">
+                                        <textarea class="input-block-level" tabindex="0" rows="7" cols="70"
+                                            placeholder="نظرتان را در اینجا بنویسید ..."
+                                            formControlName="text"></textarea>
+                                    </p>
+                                    <p class="text-error"
+                                        *ngIf="commentForm.controls.text.errors?.required && commentForm.controls.text.touched">
+                                        لطفا متن نظر خود را وارد نمایید
+                                    </p>
+                                    <p class="text-error"
+                                        *ngIf="commentForm.controls.text.errors?.maxlength && commentForm.controls.text.touched">
+                                        متن نظر نمیتواند بیشتر از 1000 کاراکتر باشد
+                                    </p>
+                                    <p>
+                                        <button class="btn btn-primary bold" type="submit" tabindex="5" id="submit"
+                                            [disabled]="commentForm.invalid">ارسال نظر</button>
+                                    </p>
+                                </form>
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="fade tab-pane" id="tab-4">
+                        <p>
+                            لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی
+                            شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات
+                            زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و
+                            کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد.
+                            حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج
+                            درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این
+                            ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="boxed-area no-bottom">
+    <div class="container">
+
+        <!--  ==========  -->
+        <!--  = Title =  -->
+        <!--  ==========  -->
+        <div class="row">
+            <div class="span12">
+                <div class="main-titles lined">
+                    <h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
+                </div>
+            </div>
+        </div>
+
+        <!--  ==========  -->
+        <!--  = Related products =  -->
+        <!--  ==========  -->
+        <div class="row popup-products">
+            <app-single-product [product]="product" *ngFor="let product of relatedProduct"></app-single-product>
+        </div>
+    </div>
+</div>
+
+<swal
+#sweetAlert
+text=""
+title="ثبت سبد خرید"
+icon="success"
+[showCancelButton]="true"
+[focusCancel]="true">
+</swal>
+
+<swal
+#sweetAlertError
+text=""
+title="خطا"
+icon="error"
+[showCancelButton]="true"
+[focusCancel]="true">
+</swal>

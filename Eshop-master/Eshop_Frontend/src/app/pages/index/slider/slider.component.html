@@ -1,0 +1,34 @@
+<!--  ==========  -->
+<!--  = Sliders Revolution =  -->
+<!--  ==========  -->
+<div class="fullwidthbanner-container">
+  <div class="fullwidthbanner">
+    <ul *ngIf="sliders !== null && sliders.length > 0">
+      <li *ngFor="let slider of sliders" data-transition="premium-random" data-slotamount="3">
+        <img [src]="domain+'/Images/Sliders/Origin/'+slider.imageName" alt="slider img" width="1400" height="377" />
+
+        <!-- texts -->
+        <div class="caption lfl big_theme" data-x="120" data-y="120" data-speed="1000" data-start="500"
+          data-easing="easeInOutBack">
+          {{slider.title}}
+        </div>
+
+        <div class="caption lfl small_theme" data-x="120" data-y="190" data-speed="1000" data-start="700"
+          data-easing="easeInOutBack">
+          {{slider.description}}
+        </div>
+
+        <a *ngIf="slider.link !== null" href="{{slider.link}}" class="caption lfl btn btn-primary btn_theme"
+          data-x="120" data-y="260" data-speed="1000" data-start="900" data-easing="easeInOutBack">
+          مشاهده
+        </a>
+      </li><!-- /slide -->
+    </ul>
+    <div class="tp-bannertimer"></div>
+  </div>
+  <!--  ==========  -->
+  <!--  = Nav Arrows =  -->
+  <!--  ==========  -->
+  <div id="sliderRevLeft"><i class="icon-chevron-left"></i></div>
+  <div id="sliderRevRight"><i class="icon-chevron-right"></i></div>
+</div> <!-- /slider revolution -->

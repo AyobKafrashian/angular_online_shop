@@ -1,0 +1,50 @@
+<div class="span3 filter--blazers" data-price="1567" data-popularity="2" data-size="xs|s|m|xl" data-color="pink"
+    data-brand="adidas">
+    <div class="product" *ngIf="product">
+
+        <div class="stamp red">تمام شد</div>
+
+        <div class="product-img">
+            <div class="picture">
+                <img width="540" height="374" alt="" [src]="imagePath+product.imageName" />
+                <div class="img-overlay">
+                    <a
+                    class="btn more btn-primary"
+                    [routerLink]="['/products',product.id,productName]">
+                    توضیحات بیشتر
+                  </a>
+                    <a class="btn buy btn-danger" (click)="addProductToOrder()">اضافه به سبد خرید</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-titles no-margin">
+            <h4 class="title">{{product.price}} تومان</h4>
+            <h5 class="no-margin isotope--title">{{product.productName}}</h5>
+        </div>
+        <p class="center-align stars">
+            <span class="icon-star stars-clr"></span>
+            <span class="icon-star stars-clr"></span>
+            <span class="icon-star"></span>
+            <span class="icon-star"></span>
+            <span class="icon-star"></span>
+        </p>
+    </div>
+</div> <!-- /single product -->
+
+<swal
+#sweetAlert
+text=""
+title="ثبت سبد خرید"
+icon="success"
+[showCancelButton]="true"
+[focusCancel]="true">
+</swal>
+
+<swal
+#sweetAlertError
+text=""
+title="خطا"
+icon="error"
+[showCancelButton]="true"
+[focusCancel]="true">
+</swal>
